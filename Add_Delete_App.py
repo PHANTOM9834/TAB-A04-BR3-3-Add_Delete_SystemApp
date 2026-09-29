@@ -8,7 +8,6 @@ import tempfile
 ctk.set_appearance_mode("System")
 ctk.set_default_color_theme("blue")
 
-
 class RomPatcherApp(ctk.CTk):
 
   def __init__(self):
@@ -393,7 +392,6 @@ class RomPatcherApp(ctk.CTk):
 
     if success:
       self.fetch_app_list()
-
 
 if __name__ == "__main__":
   app = RomPatcherApp()
