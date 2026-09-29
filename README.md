@@ -1,4 +1,4 @@
-# TAB-A04-BR3-3-Add_Delete_App チャレンジタッチ3のシステムアプリの追加、削除自動化ツール
+# TAB-A04-BR3-3-Add_Delete_App チャレンジタッチ3のシステムアプリの追加、削除自動化ツール for Linux
 本ツールを使用した場合、以下の条件にすべて同意したものとみなされます。
 本ツールはAndroidシステムのパーティション書き換えを行う高度なツールです。
 誤った操作や不具合により、デバイスが起動しなくなる（文鎮化する）等の重大なリスクがあります。
@@ -28,10 +28,38 @@ Ubuntuベース向けに構築されているため、他のLinuxディストリ
 ## 動作環境・必要要件
 - **OS:** Zorin OS 18.1 推奨（Ubuntuベース。※Linux Mint等ではマウントが読み込み専用になる挙動が確認されているため、Zorin OSの利用を強く推奨します）
 - **Python:** Python 3.12 推奨
-- **システム依存ツール:** `lzip`
+- **Python ライブラリ:** `customtkinter` `tkinter`
 
 ### インストール手順
 端末（ターミナル）を開き、必要なパッケージをインストールしてください：
 ```bash
 pip install customtkinter
 sudo apt install python3-tk
+```
+
+### 仮想環境について
+- LinuxではWindowsのようにPythonライブラリをpipで追加しようとすると以下のようにエラーになります。
+- そのためvenvを使用して仮想環境を構築してその中でライブラリの追加、Pythonスクリプトの実行をすることを推奨します。
+- どうしても仮想環境を使用したくないのであれば `--break-system-packages` を使用する方法もありますがあまりおすすめはできません。
+```markdown
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─> To install Python packages system-wide, try apt install
+    python3-xyz, where xyz is the package you are trying to
+    install.
+    
+    If you wish to install a non-Debian-packaged Python package,
+    create a virtual environment using python3 -m venv path/to/venv.
+    Then use path/to/venv/bin/python and path/to/venv/bin/pip. Make
+    sure you have python3-full installed.
+    
+    If you wish to install a non-Debian packaged Python application,
+    it may be easiest to use pipx install xyz, which will manage a
+    virtual environment for you. Make sure you have pipx installed.
+    
+    See /usr/share/doc/python3.12/README.venv for more information.
+
+note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+hint: See PEP 668 for the detailed specification.  
+```
